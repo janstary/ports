@@ -2,7 +2,7 @@ PREFIX		= $(HOME)
 PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 
-FETCH		= /usr/bin/curl
+FETCH		= /usr/bin/curl --create-dirs -f -s -S -o
 DIFF		= /usr/bin/diff
 FIND		= /usr/bin/find
 OPENSSL		= /usr/bin/openssl
@@ -31,8 +31,7 @@ all: build
 
 fetch: $(DISTFILE)
 $(DISTFILE):
-	@install -d -m 0755 $(DISTFILES)
-	$(FETCH) $(DOWNLOAD)/$(TARBALL) > $(DISTFILE)
+	$(FETCH) $(DISTFILE) $(DOWNLOAD)/$(TARBALL)
 
 makesum: $(DISTINFO)
 $(DISTINFO): $(DISTFILE)
