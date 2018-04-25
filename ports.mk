@@ -24,7 +24,8 @@ PATCHDIR	= patches
 SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
-CONFIGURE_ARGS	= --prefix=$(PREFIX)
+CONFIGURE_ARGS	= --prefix=$(PREFIX)	\
+		  --disable-silent-rules
 
 EXTRACTED	= $(WRKDIR)/.extracted
 PATCHED		= $(WRKDIR)/.patched
