@@ -5,6 +5,7 @@ DISTFILES	= $(PORTSDIR)/distfiles
 FETCH		= /usr/bin/curl
 OPENSSL		= /usr/bin/openssl
 SHASUM		= $(OPENSSL) dgst -sha256
+DIFF		= /usr/bin/diff
 TAR		= /usr/bin/tar
 
 SUFFIX		= tar.gz
@@ -36,7 +37,7 @@ $(DISTINFO): $(DISTFILE)
 	@( cd $(DISTFILES) && $(SHASUM) $(TARBALL) ) > $(DISTINFO)
 
 checksum: $(DISTFILE) $(DISTINFO)
-	@( cd $(DISTFILES) && $(SHASUM) $(TARBALL) ) | diff -q - $(DISTINFO)
+	@( cd $(DISTFILES) && $(SHASUM) $(TARBALL) ) | $(DIFF) -q - $(DISTINFO)
 
 extract: checksum $(EXTRACTED)
 $(EXTRACTED): $(DISTFILE)
