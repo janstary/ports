@@ -1,4 +1,7 @@
-PREFIX		= $(HOME)
+PREFIX		= /usr/local
+BINDIR		= $(PREFIX)/bin/
+MANDIR		= $(PREFIX)/man/
+
 PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 
@@ -64,6 +67,15 @@ $(BUILT): $(CONFIGURED)
 	@date > $(BUILT)
 
 install: build
+	install -d $(BINDIR)
+	install -d $(MANDIR)/man1
+	install -d $(MANDIR)/man2
+	install -d $(MANDIR)/man3
+	install -d $(MANDIR)/man4
+	install -d $(MANDIR)/man5
+	install -d $(MANDIR)/man6
+	install -d $(MANDIR)/man7
+	install -d $(MANDIR)/man8
 	( cd $(SRCDIR) && make install )
 
 uninstall:

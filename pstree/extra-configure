@@ -5,6 +5,6 @@ all:
 	\$(CC) \$(CFLAGS) \$(CPPFLAGS) \$(LDFLAGS) -o pstree pstree.c
 
 install: all
-	install pstree   \$(HOME)/bin/
-	install pstree.1 \$(HOME)/man/man1/
+	install pstree   /usr/local/bin
+	install pstree.1 /usr/local/man/man1/
 __HEREDOC__
