@@ -13,8 +13,8 @@ SHASUM		= $(OPENSSL) dgst -sha256
 TAR		= /usr/bin/tar
 XARGS		= /usr/bin/xargs
 
-SUFFIX		= tar.gz
-TARBALL		= $(NAME)-$(VERSION).$(SUFFIX)
+SUFFIX		?= tar.gz
+TARBALL		?= $(NAME)-$(VERSION).$(SUFFIX)
 DISTFILE	= $(DISTFILES)/$(TARBALL)
 DISTINFO	= distinfo
 
