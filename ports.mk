@@ -23,6 +23,7 @@ FILESDIR	= files
 PATCHDIR	= patches
 SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
 
+CONFIGURE	?= ./configure
 CONFIGURE_ARGS	= --prefix=$(PREFIX)
 
 EXTRACTED	= $(WRKDIR)/.extracted
@@ -58,7 +59,8 @@ $(PATCHED):
 
 configure: patch $(CONFIGURED)
 $(CONFIGURED): $(PATCHED)
-	( cd $(SRCDIR) && ./configure $(CONFIGURE_ARGS) )
+	if test -n "$(CONFIGURE)" ; then \
+		( cd $(SRCDIR) && $(CONFIGURE) $(CONFIGURE_ARGS) ) ; fi
 	@date > $(CONFIGURED)
 
 build: configure $(BUILT)
