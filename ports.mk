@@ -1,5 +1,8 @@
 PREFIX		= /usr/local
 BINDIR		= $(PREFIX)/bin/
+SBINDIR		= $(PREFIX)/sbin/
+LIBDIR		= $(PREFIX)/lib/
+INCDIR		= $(PREFIX)/include/
 MANDIR		= $(PREFIX)/man/
 
 PORTSDIR	= $(HOME)/ports
@@ -24,8 +27,15 @@ PATCHDIR	= patches
 SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
-CONFIGURE_ARGS	= --prefix=$(PREFIX)	\
-		  --disable-silent-rules
+CONFIGURE_ARGS	= --disable-silent-rules	\
+		  --enable-option-checking	\
+		  --prefix=$(PREFIX)		\
+		  --bindir=$(BINDIR)           	\
+		  --sbindir=$(SBINDIR)		\
+		  --libdir=$(LIBDIR)		\
+		  --includedir=$(INCDIR)	\
+		  --mandir=$(MANDIR)		\
+		  --sysconfdir=/etc
 
 EXTRACTED	= $(WRKDIR)/.extracted
 PATCHED		= $(WRKDIR)/.patched
