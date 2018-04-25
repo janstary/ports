@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cat > Makefile << __HEREDOC__
+all:
+	\$(CC) \$(CFLAGS) \$(CPPFLAGS) \$(LDFLAGS) -o pstree pstree.c
+
+install: all
+	install pstree   \$(HOME)/bin/
+	install pstree.1 \$(HOME)/man/man1/
+__HEREDOC__
