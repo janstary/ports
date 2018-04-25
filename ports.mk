@@ -1,3 +1,4 @@
+PREFIX		= $(HOME)
 PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 
@@ -15,6 +16,8 @@ WRKDIR		= work
 FILESDIR	= files
 PATCHDIR	= patches
 SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
+
+CONFIGURE_ARGS	= --prefix=$(PREFIX)
 
 EXTRACTED	= $(WRKDIR)/.extracted
 PATCHED		= $(WRKDIR)/.patched
@@ -43,13 +46,13 @@ $(EXTRACTED): $(DISTFILE)
 
 patch: extract $(PATCHED)
 $(PATCHED):
-	test -d $(FILESDIR) && install $(FILESDIR)/* $(SRCDIR)
+	@if test -d $(FILESDIR) ; then install $(FILESDIR)/* $(SRCDIR) ; fi
 	#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
 	@date > $(PATCHED)
 
 configure: patch $(CONFIGURED)
 $(CONFIGURED): $(PATCHED)
-	( cd $(SRCDIR) && ./configure )
+	( cd $(SRCDIR) && ./configure $(CONFIGURE_ARGS) )
 	@date > $(CONFIGURED)
 
 build: configure $(BUILT)
