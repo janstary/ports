@@ -1,0 +1,14 @@
+PREFIX="${HOME}"
+
+#MANPATH_DEFAULT="${PREFIX}/share/man:/usr/local/share/man:/usr/share/man"
+#MANPATH_BASE="/usr/share/man"
+
+# The following files are in conflict with groff:
+# bin/soelim, share/man/man1/soelim.1.gz, share/man/man7/roff.7.gz
+# Rename them so that mandoc and groff can coexist
+#BINM_SOELIM="msoelim"
+#MANM_ROFF="mandoc_roff"
+
+INSTALL_LIBMANDOC=0
+BUILD_CGI=0
+BUILD_CATMAN=0
