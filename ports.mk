@@ -5,6 +5,11 @@ LIBDIR		= $(PREFIX)/lib/
 INCDIR		= $(PREFIX)/include/
 MANDIR		= $(PREFIX)/man/
 
+CC		= cc
+CFLAGS		= -Wall
+CPPFLAGS	= -I$(INCDIR)
+LDFLAGS		= -L$(LIBDIR)
+
 PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 
@@ -27,6 +32,7 @@ PATCHDIR	= patches
 SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
+CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
 CONFIGURE_ARGS	= --disable-silent-rules	\
 		  --enable-option-checking	\
 		  --prefix=$(PREFIX)		\
@@ -70,8 +76,8 @@ $(PATCHED):
 
 configure: patch $(CONFIGURED)
 $(CONFIGURED): $(PATCHED)
-	if test -n "$(CONFIGURE)" ; then \
-		( cd $(SRCDIR) && $(CONFIGURE) $(CONFIGURE_ARGS) ) ; fi
+	if test -n "$(CONFIGURE)" ; then ( cd $(SRCDIR) && \
+		env $(CONFIGURE_ENV) $(CONFIGURE) $(CONFIGURE_ARGS) ) ; fi
 	@date > $(CONFIGURED)
 
 build: configure $(BUILT)
