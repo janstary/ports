@@ -8,11 +8,25 @@ comes with LibreSSL 2.2.7 and groff 1.19.2, does not have `ftp(1)`, etc.
 Then there is third-party software you want to have.
 This is a package manager that automatically performs what you do
 when you download, extract, patch, configure, build and install
-third-party software manually. Is consists of a set of Makefiles
+third-party software manually. It consists of a set of Makefiles
 describing where to download the tarball from, how to patch, etc.
-A typical installation happens with a simple
+A typical installation happens with a simple `make install`
+in the given port's directory.
+
+## install
+
+To install this system,
 
 ```sh
-cd ~/ports/mandoc/
+cd
+git clone git@github.com:janstary/ports.git
+```
+
+That's it. The indvidual ports live in the subdirectories.
+For example, to install `mandoc`:
+
+```sh
+cd ~/ports/mandoc
 make install
 ```
+
