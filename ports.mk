@@ -3,10 +3,12 @@ PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 
 FETCH		= /usr/bin/curl
+DIFF		= /usr/bin/diff
+FIND		= /usr/bin/find
 OPENSSL		= /usr/bin/openssl
 SHASUM		= $(OPENSSL) dgst -sha256
-DIFF		= /usr/bin/diff
 TAR		= /usr/bin/tar
+XARGS		= /usr/bin/xargs
 
 SUFFIX		= tar.gz
 TARBALL		= $(NAME)-$(VERSION).$(SUFFIX)
@@ -41,13 +43,14 @@ checksum: $(DISTFILE) $(DISTINFO)
 
 extract: checksum $(EXTRACTED)
 $(EXTRACTED): $(DISTFILE)
-	install -d $(WRKDIR)/$(TARDIR)
+	@install -d $(WRKDIR)/$(TARDIR)
 	$(TAR) -C $(WRKDIR)/$(TARDIR) -xzf $(DISTFILE)
+	@$(FIND) . -name extra-\* | $(XARGS) -J % $(TAR) cf - % \
+	| $(TAR) -C $(SRCDIR) -s /extra-// -xvf -
 	@date > $(EXTRACTED)
 
 patch: extract $(PATCHED)
 $(PATCHED):
-	@if test -d $(FILESDIR) ; then install $(FILESDIR)/* $(SRCDIR) ; fi
 	#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
 	@date > $(PATCHED)
 
