@@ -41,8 +41,8 @@ checksum: $(DISTFILE) $(DISTINFO)
 
 extract: checksum $(EXTRACTED)
 $(EXTRACTED): $(DISTFILE)
-	@install -d $(WRKDIR)
-	$(TAR) -C $(WRKDIR) -xzf $(DISTFILE)
+	install -d $(WRKDIR)/$(TARDIR)
+	$(TAR) -C $(WRKDIR)/$(TARDIR) -xzf $(DISTFILE)
 	@date > $(EXTRACTED)
 
 patch: extract $(PATCHED)
