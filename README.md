@@ -27,6 +27,7 @@ For example, to install `mandoc`:
 
 ```sh
 cd ~/ports/mandoc
-make install
+make
+sudo make install
 ```
 
