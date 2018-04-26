@@ -20,6 +20,8 @@ To install this system,
 ```sh
 cd
 git clone git@github.com:janstary/ports.git
+cd ports
+make init
 ```
 
 That's it. The indvidual ports live in the subdirectories.
