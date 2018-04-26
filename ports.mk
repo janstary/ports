@@ -1,3 +1,7 @@
+PORTSDIR	= $(HOME)/ports
+DISTFILES	= $(PORTSDIR)/distfiles
+PACKAGES	= $(PORTSDIR)/packages
+
 PREFIX		= /usr/local
 BINDIR		= $(PREFIX)/bin/
 SBINDIR		= $(PREFIX)/sbin/
@@ -9,9 +13,6 @@ CC		= cc
 CFLAGS		= -Wall
 CPPFLAGS	= -I$(INCDIR)
 LDFLAGS		= -L$(LIBDIR)
-
-PORTSDIR	= $(HOME)/ports
-DISTFILES	= $(PORTSDIR)/distfiles
 
 FETCH		= /usr/bin/curl --create-dirs -f -s -S -o
 DIFF		= /usr/bin/diff
@@ -25,28 +26,32 @@ SUFFIX		?= tar.gz
 TARBALL		?= $(NAME)-$(VERSION).$(SUFFIX)
 DISTFILE	= $(DISTFILES)/$(TARBALL)
 DISTINFO	= distinfo
+CONTENT		= content
 
-WRKDIR		= work
-FILESDIR	= files
-PATCHDIR	= patches
-SRCDIR		= $(WRKDIR)/$(NAME)-$(VERSION)
+SRCDIR		= $(WORKDIR)/$(NAME)-$(VERSION)
+WORKDIR		= $(shell pwd)/work
+FAKEDIR		= $(shell pwd)/fake
 
 CONFIGURE	?= ./configure
 CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
-CONFIGURE_ARGS	= --disable-silent-rules	\
-		  --enable-option-checking	\
-		  --prefix=$(PREFIX)		\
-		  --bindir=$(BINDIR)           	\
-		  --sbindir=$(SBINDIR)		\
-		  --libdir=$(LIBDIR)		\
-		  --includedir=$(INCDIR)	\
-		  --mandir=$(MANDIR)		\
-		  --sysconfdir=/etc
+CONFIGURE_ARGS	= --disable-silent-rules		\
+		  --enable-option-checking		\
+		  --prefix=$(FAKEDIR)$(PREFIX)		\
+		  --bindir=$(FAKEDIR)/$(BINDIR)		\
+		  --sbindir=$(FAKEDIR)/$(SBINDIR)	\
+		  --libdir=$(FAKEDIR)/$(LIBDIR)		\
+		  --includedir=$(FAKEDIR)/$(INCDIR)	\
+		  --mandir=$(FAKEDIR)/$(MANDIR)		\
+		  --sysconfdir=$(FAKEDIR)/etc
 
-EXTRACTED	= $(WRKDIR)/.extracted
-PATCHED		= $(WRKDIR)/.patched
-CONFIGURED	= $(WRKDIR)/.configured
-BUILT		= $(WRKDIR)/.built
+EXTRACTED	= $(WORKDIR)/.extracted
+PATCHED		= $(WORKDIR)/.patched
+CONFIGURED	= $(WORKDIR)/.configured
+BUILT		= $(WORKDIR)/.built
+
+MACHINE		= $(shell uname -m)
+PKGFILE		= $(NAME)-$(VERSION)-$(MACHINE).tar.gz
+PACKAGE		= $(PACKAGES)/$(PKGFILE)
 
 all: build
 
@@ -63,8 +68,8 @@ checksum: $(DISTFILE) $(DISTINFO)
 
 extract: checksum $(EXTRACTED)
 $(EXTRACTED): $(DISTFILE)
-	@install -d $(WRKDIR)/$(TARDIR)
-	$(TAR) -C $(WRKDIR)/$(TARDIR) -xzf $(DISTFILE)
+	@install -d $(WORKDIR)/$(TARDIR)
+	$(TAR) -C $(WORKDIR)/$(TARDIR) -xzf $(DISTFILE)
 	@$(FIND) . -name extra-\* | $(XARGS) -J % $(TAR) cf - % \
 	| $(TAR) -C $(SRCDIR) -s /extra-// -xvf -
 	@date > $(EXTRACTED)
@@ -85,23 +90,29 @@ $(BUILT): $(CONFIGURED)
 	( cd $(SRCDIR) && make )
 	@date > $(BUILT)
 
-install: build
-	install -d $(BINDIR)
-	install -d $(MANDIR)/man1
-	install -d $(MANDIR)/man2
-	install -d $(MANDIR)/man3
-	install -d $(MANDIR)/man4
-	install -d $(MANDIR)/man5
-	install -d $(MANDIR)/man6
-	install -d $(MANDIR)/man7
-	install -d $(MANDIR)/man8
+fake: build
+	install -d $(FAKEDIR)$(PREFIX)
+	install -d $(FAKEDIR)$(BINDIR)
+	install -d $(FAKEDIR)$(SBINDIR)
+	install -d $(FAKEDIR)$(LIBDIR)
+	install -d $(FAKEDIR)$(INCDIR)
+	install -d $(FAKEDIR)$(MANDIR)
 	( cd $(SRCDIR) && make install )
 
+package: fake $(PACKAGE)
+$(PACKAGE): $(CONTENT)
+	install -d $(PACKAGES)
+	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -cvzf $(PACKAGE)
+
+install: $(PACKAGE)
+	$(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
+
 uninstall:
-	( cd $(SRCDIR) && make uninstall )
+	cd $(PREFIX) && $(TAR) tzf $(PACKAGE) | xargs rm -f
+	# FIXME: the content list should be stored elsewhere
 
 clean:
-	@rm -rf $(WRKDIR) *~
+	@rm -rf $(WORKDIR) $(FAKEDIR) *~
 
 distclean: clean
 	@rm -f $(DISTFILE)
