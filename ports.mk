@@ -98,6 +98,9 @@ $(FAKED): $(BUILT)
 	( cd $(SRCDIR) && make install PREFIX=$(FAKEDIR) )
 	@date > $(FAKED)
 
+makecontent: $(FAKED)
+	( cd $(FAKEDIR) && find . -type f ) | cut -c 3- > $(CONTENT)
+
 package: $(PACKAGE)
 $(PACKAGE): $(FAKED) $(CONTENT)
 	install -d $(PACKAGES)
