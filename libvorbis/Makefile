@@ -8,6 +8,4 @@ DOWNLOAD	= https://ftp.osuosl.org/pub/xiph/releases/vorbis/
 #depends_build   port:pkgconfig
 #depends_lib     port:libogg
 
-#patchfiles          patch-docdir.diff
-
 include ../ports.mk
