@@ -1,6 +1,12 @@
 PORTSDIR	= $(HOME)/ports
 DISTFILES	= $(PORTSDIR)/distfiles
 PACKAGES	= $(PORTSDIR)/packages
+PKGINDEX	= $(PORTSDIR)/index
+
+MACHINE		= $(shell uname -m)
+PKGREC		= $(PKGINDEX)/$(NAME)-$(VERSION)
+PKGFILE		= $(NAME)-$(VERSION)-$(MACHINE).tar.gz
+PACKAGE		= $(PACKAGES)/$(PKGFILE)
 
 PREFIX		= /usr/local
 BINDIR		= $(PREFIX)/bin/
@@ -36,22 +42,19 @@ CONFIGURE	?= ./configure
 CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
 CONFIGURE_ARGS	= --disable-silent-rules		\
 		  --enable-option-checking		\
-		  --prefix=$(FAKEDIR)$(PREFIX)		\
-		  --bindir=$(FAKEDIR)/$(BINDIR)		\
-		  --sbindir=$(FAKEDIR)/$(SBINDIR)	\
-		  --libdir=$(FAKEDIR)/$(LIBDIR)		\
-		  --includedir=$(FAKEDIR)/$(INCDIR)	\
-		  --mandir=$(FAKEDIR)/$(MANDIR)		\
+		  --prefix=$(FAKEDIR)			\
+		  --bindir=$(FAKEDIR)/bin		\
+		  --sbindir=$(FAKEDIR)/sbin		\
+		  --libdir=$(FAKEDIR)/lib		\
+		  --includedir=$(FAKEDIR)/include	\
+		  --mandir=$(FAKEDIR)/man		\
 		  --sysconfdir=$(FAKEDIR)/etc
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
 CONFIGURED	= $(WORKDIR)/.configured
 BUILT		= $(WORKDIR)/.built
-
-MACHINE		= $(shell uname -m)
-PKGFILE		= $(NAME)-$(VERSION)-$(MACHINE).tar.gz
-PACKAGE		= $(PACKAGES)/$(PKGFILE)
+FAKED		= $(WORKDIR)/.faked
 
 all: build
 
@@ -74,38 +77,36 @@ $(EXTRACTED): $(DISTFILE)
 	| $(TAR) -C $(SRCDIR) -s /extra-// -xvf -
 	@date > $(EXTRACTED)
 
-patch: extract $(PATCHED)
-$(PATCHED):
+patch: $(PATCHED)
+$(PATCHED): $(EXTRACTED)
 	#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
 	@date > $(PATCHED)
 
-configure: patch $(CONFIGURED)
+configure: $(CONFIGURED)
 $(CONFIGURED): $(PATCHED)
 	if test -n "$(CONFIGURE)" ; then ( cd $(SRCDIR) && \
 		env $(CONFIGURE_ENV) $(CONFIGURE) $(CONFIGURE_ARGS) ) ; fi
 	@date > $(CONFIGURED)
 
-build: configure $(BUILT)
+build: $(BUILT)
 $(BUILT): $(CONFIGURED)
 	( cd $(SRCDIR) && make )
 	@date > $(BUILT)
 
-fake: build
-	install -d $(FAKEDIR)$(PREFIX)
-	install -d $(FAKEDIR)$(BINDIR)
-	install -d $(FAKEDIR)$(SBINDIR)
-	install -d $(FAKEDIR)$(LIBDIR)
-	install -d $(FAKEDIR)$(INCDIR)
-	install -d $(FAKEDIR)$(MANDIR)
-	( cd $(SRCDIR) && make install )
+fake: $(FAKED)
+$(FAKED): $(BUILT)
+	( cd $(SRCDIR) && make install PREFIX=$(FAKEDIR) )
+	@date > $(FAKED)
 
-package: fake $(PACKAGE)
-$(PACKAGE): $(CONTENT)
+package: $(PACKAGE)
+$(PACKAGE): $(FAKED) $(CONTENT)
 	install -d $(PACKAGES)
-	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -cvzf $(PACKAGE)
+	$(TAR) -I $(CONTENT) -C $(FAKEDIR) -cvzf $(PACKAGE)
 
 install: $(PACKAGE)
 	$(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
+	install -d -m 0755 $(PKGREC)
+	install content $(PKGREC)
 
 uninstall:
 	cd $(PREFIX) && $(TAR) tzf $(PACKAGE) | xargs rm -f
