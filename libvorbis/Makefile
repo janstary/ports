@@ -5,7 +5,6 @@ DESCRIPTION	= the Ogg Vorbis audio codec
 HOMEPAGE	= https://xiph.org/vorbis/
 DOWNLOAD	= https://ftp.osuosl.org/pub/xiph/releases/vorbis/
 
-#depends_build   port:pkgconfig
 #depends_lib     port:libogg
 
 include ../ports.mk
