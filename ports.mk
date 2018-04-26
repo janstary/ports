@@ -108,9 +108,9 @@ install: $(PACKAGE)
 	install -d -m 0755 $(PKGREC)
 	install content $(PKGREC)
 
-uninstall:
-	cd $(PREFIX) && $(TAR) tzf $(PACKAGE) | xargs rm -f
-	# FIXME: the content list should be stored elsewhere
+uninstall: $(PKGREC)/content
+	cd $(PREFIX) && cat $(PKGREC)/content | xargs rm -f
+	rm -rf $(PKGREC)
 
 clean:
 	@rm -rf $(WORKDIR) $(FAKEDIR) *~

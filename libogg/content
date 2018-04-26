@@ -5,5 +5,4 @@ lib/libogg.0.dylib
 lib/libogg.a
 lib/libogg.dylib
 lib/libogg.la
-lib/pkgconfig
 lib/pkgconfig/ogg.pc
