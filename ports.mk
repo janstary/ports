@@ -20,7 +20,7 @@ CFLAGS		= -Wall
 CPPFLAGS	= -I$(INCDIR)
 LDFLAGS		= -L$(LIBDIR)
 
-FETCH		= /usr/bin/curl --create-dirs -f -s -S -o
+FETCH		= /usr/bin/curl --create-dirs -L -f -s -S -o
 DIFF		= /usr/bin/diff
 FIND		= /usr/bin/find
 OPENSSL		= /usr/bin/openssl
