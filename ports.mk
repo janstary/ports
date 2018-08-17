@@ -80,7 +80,7 @@ $(EXTRACTED): $(DISTFILE)
 
 patch: $(PATCHED)
 $(PATCHED): $(EXTRACTED)
-	#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
+	@#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
 	@date > $(PATCHED)
 
 configure: $(CONFIGURED)
