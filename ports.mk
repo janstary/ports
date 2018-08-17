@@ -100,7 +100,7 @@ $(FAKED): $(BUILT)
 	@date > $(FAKED)
 
 makecontent: $(FAKED)
-	( cd $(FAKEDIR) && find . -type f ) | cut -c 3- > $(CONTENT)
+	( cd $(FAKEDIR) && find . -type f -or -type l ) | cut -c 3- > $(CONTENT)
 
 package: $(PACKAGE)
 $(PACKAGE): $(FAKED) $(CONTENT)
