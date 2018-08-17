@@ -28,6 +28,7 @@ SHASUM		= $(OPENSSL) dgst -sha256
 SUDO		= /usr/bin/sudo
 TAR		= /usr/bin/tar
 XARGS		= /usr/bin/xargs
+MAKEWHATIS	= /usr/local/sbin/makewhatis
 
 SUFFIX		?= tar.gz
 TARBALL		?= $(NAME)-$(VERSION).$(SUFFIX)
@@ -110,6 +111,7 @@ $(PACKAGE): $(FAKED) $(CONTENT)
 
 install: $(PACKAGE)
 	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
+	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR)
 	install -d -m 0755 $(PKGREC)
 	install content $(PKGREC)
 
