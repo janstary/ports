@@ -1,7 +1,3 @@
-PREFIX=/tmp/fakemandoc
-# FIXME we need a pre-configure target
-# where a port could write this
-
 INSTALL_LIBMANDOC=0
 BUILD_CGI=0
 BUILD_CATMAN=0
