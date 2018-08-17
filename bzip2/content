@@ -1,9 +1,13 @@
 bin/bunzip2
 bin/bzcat
+bin/bzcmp
 bin/bzdiff
+bin/bzegrep
+bin/bzfgrep
 bin/bzgrep
 bin/bzip2
 bin/bzip2recover
+bin/bzless
 bin/bzmore
 include/bzlib.h
 lib/libbz2.a
