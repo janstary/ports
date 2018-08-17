@@ -35,21 +35,21 @@ DISTFILE	= $(DISTFILES)/$(TARBALL)
 DISTINFO	= distinfo
 CONTENT		= content
 
-SRCDIR		= $(WORKDIR)/$(NAME)-$(VERSION)
-WORKDIR		= $(shell pwd)/work
-FAKEDIR		= $(shell pwd)/fake
+SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
+WORKDIR		?= $(shell pwd)/work
+FAKEDIR		?= $(shell pwd)/fake
 
 CONFIGURE	?= ./configure
-CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
-CONFIGURE_ARGS	= --disable-silent-rules		\
+CONFIGURE_ENV	?= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
+CONFIGURE_ARGS	?= --disable-silent-rules		\
 		  --enable-option-checking		\
-		  --prefix=$(PREFIX)			\
-		  --bindir=$(PREFIX)/bin		\
-		  --sbindir=$(PREFIX)/sbin		\
-		  --libdir=$(PREFIX)/lib		\
-		  --includedir=$(PREFIX)/include	\
-		  --mandir=$(PREFIX)/man		\
-		  --sysconfdir=$(PREFIX)/etc
+		  --prefix=$(FAKEDIR)			\
+		  --bindir=$(FAKEDIR)/bin		\
+		  --sbindir=$(FAKEDIR)/sbin		\
+		  --libdir=$(FAKEDIR)/lib		\
+		  --includedir=$(FAKEDIR)/include	\
+		  --mandir=$(FAKEDIR)/man		\
+		  --sysconfdir=$(FAKEDIR)/etc
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
