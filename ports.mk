@@ -25,6 +25,7 @@ DIFF		= /usr/bin/diff
 FIND		= /usr/bin/find
 OPENSSL		= /usr/bin/openssl
 SHASUM		= $(OPENSSL) dgst -sha256
+SUDO		= /usr/bin/sudo
 TAR		= /usr/bin/tar
 XARGS		= /usr/bin/xargs
 
@@ -42,13 +43,13 @@ CONFIGURE	?= ./configure
 CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
 CONFIGURE_ARGS	= --disable-silent-rules		\
 		  --enable-option-checking		\
-		  --prefix=$(FAKEDIR)			\
-		  --bindir=$(FAKEDIR)/bin		\
-		  --sbindir=$(FAKEDIR)/sbin		\
-		  --libdir=$(FAKEDIR)/lib		\
-		  --includedir=$(FAKEDIR)/include	\
-		  --mandir=$(FAKEDIR)/man		\
-		  --sysconfdir=$(FAKEDIR)/etc
+		  --prefix=$(PREFIX)			\
+		  --bindir=$(PREFIX)/bin		\
+		  --sbindir=$(PREFIX)/sbin		\
+		  --libdir=$(PREFIX)/lib		\
+		  --includedir=$(PREFIX)/include	\
+		  --mandir=$(PREFIX)/man		\
+		  --sysconfdir=$(PREFIX)/etc
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
@@ -95,7 +96,7 @@ $(BUILT): $(CONFIGURED)
 
 fake: $(FAKED)
 $(FAKED): $(BUILT)
-	( cd $(SRCDIR) && make install PREFIX=$(FAKEDIR) )
+	( cd $(SRCDIR) && make install PREFIX=$(FAKEDIR) prefix=$(FAKEDIR) )
 	@date > $(FAKED)
 
 makecontent: $(FAKED)
@@ -107,12 +108,12 @@ $(PACKAGE): $(FAKED) $(CONTENT)
 	$(TAR) -I $(CONTENT) -C $(FAKEDIR) -cvzf $(PACKAGE)
 
 install: $(PACKAGE)
-	$(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
+	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
 	install -d -m 0755 $(PKGREC)
 	install content $(PKGREC)
 
 uninstall: $(PKGREC)/content
-	cd $(PREFIX) && cat $(PKGREC)/content | xargs rm -f
+	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) xargs rm -f
 	rm -rf $(PKGREC)
 
 clean:
