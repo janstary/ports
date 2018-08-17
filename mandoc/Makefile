@@ -3,7 +3,7 @@ VERSION		= 1.14.4
 
 DESCRIPTION	= UNIX manpage compiler
 HOMEPAGE	= https://mandoc.bsd.lv/
-DOWNLOAD	= https://mandoc.bsd.lv/snapshots/
+DOWNLOAD	= $(HOMEPAGE)/snapshots/
 
 CONFIGURE_ARGS	=
 
