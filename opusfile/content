@@ -1,9 +1,11 @@
 include/opus/opusfile.h
 lib/libopusfile.0.dylib
 lib/libopusfile.a
+lib/libopusfile.dylib
 lib/libopusfile.la
 lib/libopusurl.0.dylib
 lib/libopusurl.a
+lib/libopusurl.dylib
 lib/libopusurl.la
 lib/pkgconfig/opusfile.pc
 lib/pkgconfig/opusurl.pc
