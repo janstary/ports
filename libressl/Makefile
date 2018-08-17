@@ -1,7 +1,7 @@
 NAME		= libressl
-VERSION		= 2.7.2
+VERSION		= 2.8.0
 
-DESCRIPTION	= TLS/crypto stack 
+DESCRIPTION	= tls/crypto stack
 HOMEPAGE	= https://www.libressl.org
 DOWNLOAD	= https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/
 
