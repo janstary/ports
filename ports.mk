@@ -43,13 +43,13 @@ CONFIGURE	?= ./configure
 CONFIGURE_ENV	?= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
 CONFIGURE_ARGS	?= --disable-silent-rules		\
 		  --enable-option-checking		\
-		  --prefix=$(FAKEDIR)			\
-		  --bindir=$(FAKEDIR)/bin		\
-		  --sbindir=$(FAKEDIR)/sbin		\
-		  --libdir=$(FAKEDIR)/lib		\
-		  --includedir=$(FAKEDIR)/include	\
-		  --mandir=$(FAKEDIR)/man		\
-		  --sysconfdir=$(FAKEDIR)/etc
+		  --prefix=$(PREFIX)			\
+		  --bindir=$(PREFIX)/bin		\
+		  --sbindir=$(PREFIX)/sbin		\
+		  --libdir=$(PREFIX)/lib		\
+		  --includedir=$(PREFIX)/include	\
+		  --mandir=$(PREFIX)/man		\
+		  --sysconfdir=$(PREFIX)/etc
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
@@ -96,7 +96,7 @@ $(BUILT): $(CONFIGURED)
 
 fake: $(FAKED)
 $(FAKED): $(BUILT)
-	( cd $(SRCDIR) && make install PREFIX=$(FAKEDIR) prefix=$(FAKEDIR) )
+	( cd $(SRCDIR) && make DESTDIR=$(FAKEDIR) install )
 	@date > $(FAKED)
 
 makecontent: $(FAKED)
@@ -105,7 +105,7 @@ makecontent: $(FAKED)
 package: $(PACKAGE)
 $(PACKAGE): $(FAKED) $(CONTENT)
 	install -d $(PACKAGES)
-	$(TAR) -I $(CONTENT) -C $(FAKEDIR) -cvzf $(PACKAGE)
+	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -cvzf $(PACKAGE)
 
 install: $(PACKAGE)
 	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
