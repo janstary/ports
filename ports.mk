@@ -36,9 +36,9 @@ DISTFILE	= $(DISTFILES)/$(TARBALL)
 DISTINFO	= distinfo
 CONTENT		= content
 
-SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
 WORKDIR		?= $(shell pwd)/work
 FAKEDIR		?= $(shell pwd)/fake
+SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
 CONFIGURE_ENV	?= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
@@ -73,8 +73,8 @@ checksum: $(DISTFILE) $(DISTINFO)
 
 extract: checksum $(EXTRACTED)
 $(EXTRACTED): $(DISTFILE)
-	@install -d $(WORKDIR)/$(TARDIR)
-	$(TAR) -C $(WORKDIR)/$(TARDIR) -xzf $(DISTFILE)
+	@install -d $(WORKDIR)
+	$(TAR) -C $(WORKDIR) -xzf $(DISTFILE)
 	@$(FIND) . -name extra-\* | $(XARGS) -J % $(TAR) cf - % \
 	| $(TAR) -C $(SRCDIR) -s /extra-// -xvf -
 	@date > $(EXTRACTED)
