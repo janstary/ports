@@ -96,7 +96,7 @@ $(BUILT): $(CONFIGURED)
 
 fake: $(FAKED)
 $(FAKED): $(BUILT)
-	( cd $(SRCDIR) && make DESTDIR=$(FAKEDIR) install )
+	( cd $(SRCDIR) && make DESTDIR=$(FAKEDIR) PREFIX=$(PREFIX) install )
 	@date > $(FAKED)
 
 makecontent: $(FAKED)

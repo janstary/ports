@@ -1,6 +1,11 @@
+BINDIR	= $(PREFIX)/bin
+MANDIR	= $(PREFIX)/man/man1
+
 all:
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o pstree pstree.c
 
 install: all
-	install pstree   /usr/local/bin
-	install pstree.1 /usr/local/man/man1/
+	install -d $(DESTDIR)/$(BINDIR)
+	install -d $(DESTDIR)/$(MANDIR)
+	install pstree   $(DESTDIR)/$(BINDIR)
+	install pstree.1 $(DESTDIR)/$(MANDIR)
