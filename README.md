@@ -70,9 +70,9 @@ include ../ports.mk
 ```
 
 This is a simple port, with no dependencies, as mandoc does not
-need any extarnal libraries to configure, build or run. The makefile
-declares the name and version, gives as simple description, points
-to the homepage, and says where to get `mandoc-14.4.4.tar.gz`.
+need any external libraries or binaries to configure, to build or to run.
+The makefile declares the name and version, gives a simple description,
+points to the homepage, and says where to get `mandoc-14.4.4.tar.gz`.
 
 The `fetch` target will download `mandoc-14.4.4.tar.gz`.
 The `distinfo` file present in the `mandoc` subdirectory says:
