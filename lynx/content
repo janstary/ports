@@ -1,0 +1,4 @@
+bin/lynx
+etc/lynx.cfg
+etc/lynx.lss
+man/man1/lynx.1
