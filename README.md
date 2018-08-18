@@ -74,15 +74,15 @@ need any external libraries or binaries to configure, to build or to run.
 The makefile declares the name and version, gives a simple description,
 points to the homepage, and says where to get `mandoc-14.4.4.tar.gz`.
 
-The `fetch` target will download `mandoc-14.4.4.tar.gz`.
-The `distinfo` file present in the `mandoc` subdirectory says:
+The `fetch` target will download `mandoc-14.4.4.tar.gz`
+into `~/ports/distfiles`. The downloaded file will be checked
+against what `mandoc/distinfo` says:
 
 ```sh
 SHA256(mandoc-1.14.4.tar.gz)= 24eb72103768987dcc63b53d27fdc085796330782f44b3b40c4660b1e1ee9b9c
 ```
 
-This makes it possible to perform the `checksum`,
-to make sure it is the actual `mandoc-14.4.4.tar.gz`,
+This makes sure it is the actual `mandoc-14.4.4.tar.gz`,
 uncorrupted and not tampered with.
 
 The `extract` target will then untar `mandoc-14.4.4.tar.gz`
@@ -107,7 +107,7 @@ overriding the defaults. The `./configure` script of mandoc takes
 no arguments; it uses the above config file instead.
 
 As there are no patches to apply, the `patch` target does nothing here.
-In general, all files named `patch-*` are appliad as patches to the source.
+In general, all files named `patch-*` are applied as patches to the source.
 
 The `build` target will then run `make` in `work/mandoc-14.4.4`,
 building the actual binary. In general this also builds libraries,
@@ -144,7 +144,7 @@ sbin/makewhatis
 
 that are found in the temporary directory will be bundled
 into a binary package created by the `package` target.
-This will create `packages/mandoc-1.14.4-x86_64.tar.gz`
+This will create `~/ports/packages/mandoc-1.14.4-x86_64.tar.gz`
 (named after the port, the version, and the architecture).
 
 Ultimately, the `install` target will install the content of that package
