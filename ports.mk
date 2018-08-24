@@ -124,3 +124,6 @@ clean:
 
 distclean: clean
 	@rm -f $(DISTFILE)
+
+.PHONY: fetch makesum checksum extract patch configure build
+.PHONY: fake package install uninstall clean distclean all
