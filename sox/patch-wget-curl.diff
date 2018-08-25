@@ -1,0 +1,60 @@
+--- src/formats.c.orig	2018-08-25 08:28:41.000000000 +0200
++++ src/formats.c	2018-08-25 08:30:54.000000000 +0200
+@@ -353,7 +353,7 @@ static int sox_checkformat(sox_format_t 
+   return SOX_SUCCESS;
+ }
+ 
+-static sox_bool is_url(char const * text) /* detects only wget-supported URLs */
++static sox_bool is_url(char const * text)
+ {
+   return !(
+       strncasecmp(text, "http:" , (size_t)5) &&
+@@ -390,7 +390,7 @@ static FILE * xfopen(char const * identi
+   else if (is_url(identifier)) {
+     FILE * f = NULL;
+ #ifdef HAVE_POPEN
+-    char const * const command_format = "wget --no-check-certificate -q -O- \"%s\"";
++    char const * const command_format = "curl --no-cert-status -s -o - \"%s\"";
+     char * command = lsx_malloc(strlen(command_format) + strlen(identifier));
+     sprintf(command, command_format, identifier);
+     f = popen(command, POPEN_MODE);
+--- sox.1.orig	2018-08-25 08:31:52.000000000 +0200
++++ sox.1	2018-08-25 08:32:08.000000000 +0200
+@@ -623,7 +623,7 @@ effects chains have stopped then SoX wil
+ .SH FILENAMES
+ Filenames can be simple file names, absolute or relative path names,
+ or URLs (input files only).  Note that URL support requires that
+-.BR wget (1)
++.BR curl (1)
+ is available.
+ .SP
+ Note:
+@@ -4194,7 +4194,7 @@ Please report any bugs found in this ver
+ .BR audacity (1),
+ .BR gnuplot (1),
+ .BR octave (1),
+-.BR wget (1)
++.BR curl (1)
+ .br
+ The SoX web site at http://sox.sourceforge.net
+ .br
+--- soxformat.7.orig	2018-08-25 08:31:17.000000000 +0200
++++ soxformat.7	2018-08-25 08:31:38.000000000 +0200
+@@ -511,7 +511,7 @@ SoX can read, but not write this file fo
+ See [2] for details of this format.
+ .SP
+ Note: SoX support for SHOUTcast PLS relies on
+-.BR wget (1)
++.BR curl (1)
+ and is only partially supported: it's necessary to
+ specify the audio type manually, e.g.
+ .EX
+@@ -791,7 +791,7 @@ Fasttracker 2 Extended Instrument format
+ .BR soxi (1),
+ .BR libsox (3),
+ .BR octave (1),
+-.BR wget (1)
++.BR curl (1)
+ .SP
+ The SoX web page at http://sox.sourceforge.net
+ .br
