@@ -27,6 +27,7 @@ OPENSSL		= /usr/bin/openssl
 SHASUM		= $(OPENSSL) dgst -sha256
 SUDO		= /usr/bin/sudo
 TAR		= /usr/bin/tar
+PATCH		= /usr/bin/patch
 XARGS		= /usr/bin/xargs
 MAKEWHATIS	= /usr/local/sbin/makewhatis
 
@@ -81,7 +82,7 @@ $(EXTRACTED): $(DISTFILE)
 
 patch: $(PATCHED)
 $(PATCHED): $(EXTRACTED)
-	@#test -d $(PATCHDIR) && install $(FILESDIR)/* $(SRCDIR)
+	@$(FIND) . -name patch-\* | $(XARGS) cat | ( cd $(SRCDIR) && patch -b )
 	@date > $(PATCHED)
 
 configure: $(CONFIGURED)
@@ -116,7 +117,7 @@ install: $(PACKAGE)
 	install content $(PKGREC)
 
 uninstall: $(PKGREC)/content
-	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) xargs rm -f
+	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) $(XARGS) rm -f
 	rm -rf $(PKGREC)
 
 clean:
