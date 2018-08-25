@@ -82,7 +82,7 @@ $(EXTRACTED): $(DISTFILE)
 
 patch: $(PATCHED)
 $(PATCHED): $(EXTRACTED)
-	@$(FIND) . -name patch-\* | $(XARGS) cat | ( cd $(SRCDIR) && patch -b )
+	@$(FIND) . -name patch-\* | $(XARGS) cat | ( cd $(SRCDIR) && patch -p0 -b )
 	@date > $(PATCHED)
 
 configure: $(CONFIGURED)
