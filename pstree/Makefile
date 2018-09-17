@@ -1,3 +1,5 @@
+include ../defaults.mk
+
 NAME		= pstree
 VERSION		= 2.39
 
@@ -8,4 +10,4 @@ DOWNLOAD	= ftp://ftp.thp.uni-duisburg.de/pub/source/
 SRCDIR		= work
 CONFIGURE	=
 
-include ../ports.mk
+include ../port.mk

@@ -1,3 +1,5 @@
+include ../defaults.mk
+
 NAME		= lynx
 VERSION		= 2.8.8
 
@@ -7,17 +9,39 @@ DOWNLOAD	= https://invisible-mirror.net/archives/lynx/tarballs
 TARBALL		= ${NAME}${VERSION}rel.2.tar.gz
 SRCDIR          = $(WORKDIR)/lynx2-8-8
 
-include ../ports.mk
+CONFIGURE_ARGS	+= \
+		--without-dbmalloc	\
+		--without-dmalloc	\
+		--disable-included-msgs	\
+		--without-nss-compat	\
+		--with-ssl=/usr	\
+		--without-gnutls	\
+		--disable-gnutls-compat	\
+		--without-socks	\
+		--without-socks5	\
+		--enable-ipv6	\
+		--enable-color-style	\
+		--enable-htmlized-cfg	\
+		--enable-local-docs	\
+		--disable-locale-charset	\
+		--disable-cjk	\
+		--disable-japanese-utf8	\
+		--enable-default-colors	\
+		--disable-extended-dtd	\
+		--disable-file-upload	\
+		--disable-idna	\
+		--enable-prettysrc	\
+		--enable-charset-choice	\
+		--enable-externs	\
+		--disable-font-switch	\
+		--enable-syslog	\
+		--with-bzlib	\
+		--with-zlib	\
+		--disable-finger	\
+		--disable-gopher	\
+		--disable-news	\
+		--enable-wais	\
+		--disable-dired	\
+		--without-x
 
-#depends_lib         port:gettext port:libiconv port:libidn port:ncurses
-
-#configure.args      --datadir=${prefix}/share/doc \
-#--enable-htmlized-cfg \
-#--enable-ipv6 \
-#--enable-local-docs \
-
-# LYCurses.c:1707:26: error: incomplete definition of type 'struct term'
-#configure.cppflags-append -DNCURSES_INTERNALS=1
-
-#destroot.target-append  install-doc install-help
-#configure.args-append   --with-ssl
+include ../port.mk

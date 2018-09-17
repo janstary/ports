@@ -1,73 +1,14 @@
-PORTSDIR	= $(HOME)/ports
-DISTFILES	= $(PORTSDIR)/distfiles
-PACKAGES	= $(PORTSDIR)/packages
-PKGINDEX	= $(PORTSDIR)/index
+SUFFIX	?= tar.gz
+TARBALL	?= $(NAME)-$(VERSION).$(SUFFIX)
+DISTFILE = $(DISTFILES)/$(TARBALL)
 
-MACHINE		= $(shell uname -m)
-PKGREC		= $(PKGINDEX)/$(NAME)-$(VERSION)
-PKGFILE		= $(NAME)-$(VERSION)-$(MACHINE).tar.gz
-PACKAGE		= $(PACKAGES)/$(PKGFILE)
+WORKDIR	?= $(shell pwd)/work
+FAKEDIR	?= $(shell pwd)/fake
+SRCDIR	?= $(WORKDIR)/$(NAME)-$(VERSION)
 
-PREFIX		= /usr/local
-BINDIR		= $(PREFIX)/bin/
-SBINDIR		= $(PREFIX)/sbin/
-LIBDIR		= $(PREFIX)/lib/
-INCDIR		= $(PREFIX)/include/
-MANDIR		= $(PREFIX)/man/
-ETCDIR		= $(PREFIX)/etc
-
-CC		= cc
-CFLAGS		= -Wall
-CPPFLAGS	= -I$(INCDIR)
-LDFLAGS		= -L$(LIBDIR)
-
-FETCH		= /usr/bin/curl --create-dirs -L -f -s -S -o
-DIFF		= /usr/bin/diff
-FIND		= /usr/bin/find
-OPENSSL		= /usr/bin/openssl
-SHASUM		= $(OPENSSL) dgst -sha256
-SUDO		= /usr/bin/sudo
-TAR		= /usr/bin/tar
-PATCH		= /usr/bin/patch
-XARGS		= /usr/bin/xargs
-MAKEWHATIS	= /usr/local/sbin/makewhatis
-
-SUFFIX		?= tar.gz
-TARBALL		?= $(NAME)-$(VERSION).$(SUFFIX)
-DISTFILE	= $(DISTFILES)/$(TARBALL)
-DISTINFO	= distinfo
-CONTENT		= content
-
-WORKDIR		?= $(shell pwd)/work
-FAKEDIR		?= $(shell pwd)/fake
-SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
-
-CONFIGURE	?= ./configure
-CONFIGURE_ENV	+= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
-CONFIGURE_ARGS	+= \
-		  --prefix=$(PREFIX)		\
-		  --bindir=$(BINDIR)		\
-		  --sbindir=$(SBINDIR)		\
-		  --libdir=$(LIBDIR)		\
-		  --includedir=$(INCDIR)	\
-		  --mandir=$(MANDIR)		\
-		  --sysconfdir=$(ETCDIR)	\
-		  --enable-option-checking	\
-		  --disable-silent-rules	\
-		  --disable-silent-libtool	\
-		  --enable-static		\
-		  --enable-shared		\
-		  --enable-largefile		\
-		  --disable-java		\
-		  --disable-nls			\
-		  --with-pic
-
-
-EXTRACTED	= $(WORKDIR)/.extracted
-PATCHED		= $(WORKDIR)/.patched
-CONFIGURED	= $(WORKDIR)/.configured
-BUILT		= $(WORKDIR)/.built
-FAKED		= $(WORKDIR)/.faked
+PKGREC	= $(PKGINDEX)/$(NAME)-$(VERSION)
+PKGFILE	= $(NAME)-$(VERSION)-$(shell uname -m).tar.gz
+PACKAGE	= $(PACKAGES)/$(PKGFILE)
 
 all: build
 

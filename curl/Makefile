@@ -1,3 +1,5 @@
+include ../defaults.mk
+
 NAME		= curl
 VERSION		= 7.61.1
 
@@ -5,7 +7,7 @@ DESCRIPTION	= transfer data with URLs
 HOMEPAGE	= https://curl.haxx.se/
 DOWNLOAD	= $(HOMEPAGE)/download/
 
-CONFIGURE_ARGS	= \
+CONFIGURE_ARGS	+= \
 		--enable-optimize	\
 		--enable-warnings	\
 		--enable-werror		\
@@ -64,11 +66,4 @@ CONFIGURE_ARGS	= \
 		--without-nghttp2	\
 		--without-zsh-functions-dir
 
-include ../ports.mk
-
-#depends_build               port:pkgconfig
-#configure.env               PKG_CONFIG_PATH=${prefix}
-#test.run                    yes
-#test.target                 test-full
-#--with-ssl=
-#--with-ca-bundle=
+include ../port.mk

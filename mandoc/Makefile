@@ -1,3 +1,5 @@
+include ../defaults.mk
+
 NAME		= mandoc
 VERSION		= 1.14.4
 
@@ -7,4 +9,4 @@ DOWNLOAD	= $(HOMEPAGE)/snapshots/
 
 CONFIGURE_ARGS	=
 
-include ../ports.mk
+include ../port.mk
