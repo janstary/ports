@@ -24,7 +24,7 @@ CONFIGURE_ARGS +=			\
 		--without-amrwb		\
 		--without-amrnb		\
 		--without-wavpack	\
-		--without-sndfile	\
+		--with-sndfile		\
 		--without-mp3		\
 		--without-gsm		\
 		--without-lpc10		\
