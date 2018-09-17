@@ -14,6 +14,7 @@ SBINDIR		= $(PREFIX)/sbin/
 LIBDIR		= $(PREFIX)/lib/
 INCDIR		= $(PREFIX)/include/
 MANDIR		= $(PREFIX)/man/
+ETCDIR		= $(PREFIX)/etc
 
 CC		= cc
 CFLAGS		= -Wall
@@ -42,16 +43,16 @@ FAKEDIR		?= $(shell pwd)/fake
 SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
-CONFIGURE_ENV	?= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
-CONFIGURE_ARGS	?= --disable-silent-rules		\
-		  --enable-option-checking		\
-		  --prefix=$(PREFIX)			\
-		  --bindir=$(PREFIX)/bin		\
-		  --sbindir=$(PREFIX)/sbin		\
-		  --libdir=$(PREFIX)/lib		\
-		  --includedir=$(PREFIX)/include	\
-		  --mandir=$(PREFIX)/man		\
-		  --sysconfdir=$(PREFIX)/etc
+CONFIGURE_ENV	+= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
+CONFIGURE_ARGS	+= --disable-silent-rules	\
+		  --enable-option-checking	\
+		  --prefix=$(PREFIX)		\
+		  --bindir=$(BINDIR)		\
+		  --sbindir=$(SBINDIR)		\
+		  --libdir=$(LIBDIR)		\
+		  --includedir=$(INCDIR)	\
+		  --mandir=$(MANDIR)		\
+		  --sysconfdir=$(ETCDIR)
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
