@@ -52,7 +52,13 @@ CONFIGURE_ARGS	+= --disable-silent-rules	\
 		  --libdir=$(LIBDIR)		\
 		  --includedir=$(INCDIR)	\
 		  --mandir=$(MANDIR)		\
-		  --sysconfdir=$(ETCDIR)
+		  --sysconfdir=$(ETCDIR)	\
+		  --enable-option-checking	\
+		  --disable-silent-rules	\
+		  --enable-static		\
+		  --enable-shared		\
+		  --enable-largefile
+
 
 EXTRACTED	= $(WORKDIR)/.extracted
 PATCHED		= $(WORKDIR)/.patched
