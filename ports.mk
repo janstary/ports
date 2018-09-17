@@ -59,7 +59,8 @@ CONFIGURE_ARGS	+= \
 		  --enable-shared		\
 		  --enable-largefile		\
 		  --disable-java		\
-		  --disable-nls
+		  --disable-nls			\
+		  --with-pic
 
 
 EXTRACTED	= $(WORKDIR)/.extracted
