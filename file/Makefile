@@ -9,7 +9,7 @@ include ../ports.mk
 
 #patchfiles          patch-magic-Makefile.am.diff \
 #patch-getline.diff
-#configure.args      --disable-silent-rules \ --enable-fsect-man5
+#configure.args      --enable-fsect-man5
 #depends_lib         port:zlib
 #xinstall -W ${worksrcpath}/src/.libs file ${destroot}${prefix}/bin
 #xinstall -m 644 -W ${worksrcpath}/doc file.1 ${destroot}${prefix}/share/man/man1

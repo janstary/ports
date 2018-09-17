@@ -6,17 +6,12 @@ HOMEPAGE	= https://curl.haxx.se/
 DOWNLOAD	= $(HOMEPAGE)/download/
 
 CONFIGURE_ARGS	= \
-		--enable-option-checking\
-		--disable-silent-rules	\
 		--enable-optimize	\
 		--enable-warnings	\
 		--enable-werror		\
 		--disable-ares		\
 		--disable-rt		\
 		--disable-code-coverage	\
-		--enable-largefile	\
-		--enable-shared		\
-		--enable-static		\
 		--enable-http		\
 		--enable-ftp		\
 		--enable-file		\

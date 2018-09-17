@@ -15,7 +15,6 @@ include ../ports.mk
 #--enable-htmlized-cfg \
 #--enable-ipv6 \
 #--enable-local-docs \
-#--enable-nls
 
 # LYCurses.c:1707:26: error: incomplete definition of type 'struct term'
 #configure.cppflags-append -DNCURSES_INTERNALS=1

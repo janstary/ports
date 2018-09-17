@@ -44,8 +44,7 @@ SRCDIR		?= $(WORKDIR)/$(NAME)-$(VERSION)
 
 CONFIGURE	?= ./configure
 CONFIGURE_ENV	+= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
-CONFIGURE_ARGS	+= --disable-silent-rules	\
-		  --enable-option-checking	\
+CONFIGURE_ARGS	+= \
 		  --prefix=$(PREFIX)		\
 		  --bindir=$(BINDIR)		\
 		  --sbindir=$(SBINDIR)		\
@@ -55,9 +54,12 @@ CONFIGURE_ARGS	+= --disable-silent-rules	\
 		  --sysconfdir=$(ETCDIR)	\
 		  --enable-option-checking	\
 		  --disable-silent-rules	\
+		  --disable-silent-libtool	\
 		  --enable-static		\
 		  --enable-shared		\
-		  --enable-largefile
+		  --enable-largefile		\
+		  --disable-java		\
+		  --disable-nls
 
 
 EXTRACTED	= $(WORKDIR)/.extracted
