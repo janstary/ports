@@ -28,7 +28,7 @@ XARGS		= /usr/bin/xargs
 MAKEWHATIS	= /usr/local/sbin/makewhatis
 
 CONFIGURE	= ./configure
-CONFIGURE_ENV	= PKG_CONFIG_PATH=$(PREFIX)/pkgconfig/
+CONFIGURE_ENV	= PKG_CONFIG_PATH=$(LIBDIR)/pkgconfig/
 CONFIGURE_ARGS	= \
 		--prefix=$(PREFIX)	\
 		--bindir=$(BINDIR)	\
