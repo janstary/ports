@@ -40,7 +40,6 @@ CONFIGURE_ARGS	= \
 		--enable-unix-sockets	\
 		--enable-cookies	\
 		--without-gcov		\
-		--with-pic		\
 		--with-zlib=/usr	\
 		--without-brotli	\
 		--without-winssl	\
