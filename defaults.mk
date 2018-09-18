@@ -40,9 +40,8 @@ CONFIGURE_ARGS	= \
 		--enable-option-checking\
 		--disable-silent-rules	\
 		--disable-silent-libtool\
-		--enable-static		\
-		--enable-shared		\
 		--enable-largefile	\
+		--enable-shared		\
 		--disable-java		\
 		--disable-nls		\
 		--with-pic
