@@ -5,15 +5,19 @@ PORTS =			\
 	curl		\
 	file		\
 	flac		\
-	gettext		\
 	libevent	\
 	libogg		\
+	libopusenc	\
 	libressl	\
+	libsamplerate	\
+	libsndfile	\
 	libvorbis	\
 	lynx		\
 	mandoc		\
 	opus		\
+	opus-tools	\
 	opusfile	\
+	pkg-config	\
 	pstree		\
 	sox		\
 	tmux
