@@ -8,6 +8,8 @@ HOMEPAGE	= https://xiph.org/flac/
 DOWNLOAD	= http://downloads.xiph.org/releases/flac/
 SUFFIX		= tar.xz
 
+DEPS		= libogg
+
 CONFIGURE_ARGS	+= \
 		--enable-werror			\
 		--disable-asm-optimizations	\

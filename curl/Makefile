@@ -7,6 +7,8 @@ DESCRIPTION	= transfer data with URLs
 HOMEPAGE	= https://curl.haxx.se/
 DOWNLOAD	= $(HOMEPAGE)/download/
 
+DEPS		= libressl
+
 CONFIGURE_ARGS	+= \
 		--enable-optimize	\
 		--enable-warnings	\
@@ -44,6 +46,7 @@ CONFIGURE_ARGS	+= \
 		--without-gcov		\
 		--with-zlib=/usr	\
 		--without-brotli	\
+		--with-ssl=$(PREFIX)	\
 		--without-winssl	\
 		--without-darwinssl	\
 		--without-egd-socket	\

@@ -38,6 +38,10 @@ $(PATCHED): $(EXTRACTED)
 
 configure: $(CONFIGURED)
 $(CONFIGURED): $(PATCHED)
+	@for port in $(DEPS) ; do \
+		echo === $(NAME) depends on $$port ; \
+		make -C $(PORTSDIR)/$$port install ; \
+	done
 	if test -n "$(CONFIGURE)" ; then ( cd $(SRCDIR) && \
 		env $(CONFIGURE_ENV) $(CONFIGURE) $(CONFIGURE_ARGS) ) ; fi
 	@date > $(CONFIGURED)
