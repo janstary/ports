@@ -1,0 +1,9 @@
+include/opus/opusenc.h
+lib/libopusenc.0.dylib
+lib/libopusenc.a
+lib/libopusenc.dylib
+lib/libopusenc.la
+lib/pkgconfig/libopusenc.pc
+share/doc/libopusenc/AUTHORS
+share/doc/libopusenc/COPYING
+share/doc/libopusenc/README.md
