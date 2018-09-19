@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= opusfile
-VERSION		= 0.10
+VERSION		= 0.11
 DESCRIPTION	= decode opus files
 
 HOMEPAGE	= http://www.opus-codec.org
