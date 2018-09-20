@@ -14,7 +14,7 @@ CONFIGURE_ARGS	+= \
 		--without-dmalloc	\
 		--disable-included-msgs	\
 		--without-nss-compat	\
-		--with-ssl=/usr	\
+		--with-ssl=$(PREFIX)	\
 		--without-gnutls	\
 		--disable-gnutls-compat	\
 		--without-socks	\
