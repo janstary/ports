@@ -23,7 +23,7 @@ CONFIGURE_ARGS	+= \
 		--enable-color-style	\
 		--enable-htmlized-cfg	\
 		--enable-local-docs	\
-		--disable-locale-charset	\
+		--enable-locale-charset	\
 		--disable-cjk	\
 		--disable-japanese-utf8	\
 		--enable-default-colors	\
@@ -35,7 +35,7 @@ CONFIGURE_ARGS	+= \
 		--enable-externs	\
 		--disable-font-switch	\
 		--enable-syslog	\
-		--with-bzlib	\
+		--without-bzlib	\
 		--with-zlib	\
 		--disable-finger	\
 		--disable-gopher	\
