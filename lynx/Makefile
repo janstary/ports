@@ -9,6 +9,8 @@ DOWNLOAD	= https://invisible-mirror.net/archives/lynx/tarballs
 TARBALL		= ${NAME}${VERSION}rel.2.tar.gz
 SRCDIR          = $(WORKDIR)/lynx2-8-8
 
+DEPS		= libressl
+
 CONFIGURE_ARGS	+= \
 		--without-dbmalloc	\
 		--without-dmalloc	\
@@ -40,7 +42,7 @@ CONFIGURE_ARGS	+= \
 		--disable-finger	\
 		--disable-gopher	\
 		--disable-news	\
-		--enable-wais	\
+		--disable-wais	\
 		--disable-dired	\
 		--without-x
 
