@@ -69,7 +69,7 @@ install: $(PACKAGE)
 	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
 	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR)
 	install -d -m 0755 $(PKGREC)
-	install content $(PKGREC)
+	install -m 0644 content $(PKGREC)
 
 uninstall: $(PKGREC)/content
 	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) $(XARGS) rm -f
