@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libressl
-VERSION		= 2.8.0
+VERSION		= 2.8.1
 
 DESCRIPTION	= tls/crypto stack
 HOMEPAGE	= https://www.libressl.org

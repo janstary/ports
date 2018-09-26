@@ -75,14 +75,17 @@ include/openssl/x509_vfy.h
 include/openssl/x509v3.h
 include/tls.h
 lib/libcrypto.43.dylib
+lib/libcrypto.44.dylib
 lib/libcrypto.a
 lib/libcrypto.dylib
 lib/libcrypto.la
 lib/libssl.45.dylib
+lib/libssl.46.dylib
 lib/libssl.a
 lib/libssl.dylib
 lib/libssl.la
 lib/libtls.17.dylib
+lib/libtls.18.dylib
 lib/libtls.a
 lib/libtls.dylib
 lib/libtls.la
@@ -1000,6 +1003,7 @@ man/man3/ECPKParameters_print.3
 man/man3/ECPKParameters_print_fp.3
 man/man3/EDIPARTYNAME_free.3
 man/man3/EDIPARTYNAME_new.3
+man/man3/engine.3
 man/man3/ENGINE_add.3
 man/man3/ENGINE_add_conf_module.3
 man/man3/ENGINE_by_id.3
