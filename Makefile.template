@@ -1,0 +1,15 @@
+include ../defaults.mk
+
+NAME		= prog
+VERSION		= 1.2.3
+DESCRIPTION	= a tool that does things
+HOMEPAGE	= https://www.homepage.org/software/$(NAME)/
+DOWNLOAD	= https://ftp.somewhere.com/dist/$(NAME)/
+
+CONFIGURE_ARGS	+= \
+	--disable-this		\
+	--enable-that		\
+	--with-openssl		\
+	--without-libidn
+
+include ../port.mk
