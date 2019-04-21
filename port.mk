@@ -1,6 +1,7 @@
 SUFFIX	?= tar.gz
 TARBALL	?= $(NAME)-$(VERSION).$(SUFFIX)
-DISTFILE = $(DISTFILES)/$(TARBALL)
+DISTNAME ?= $(NAME)-$(VERSION).$(SUFFIX)
+DISTFILE ?= $(DISTFILES)/$(TARBALL)
 
 WORKDIR	?= $(shell pwd)/work
 FAKEDIR	?= $(shell pwd)/fake
@@ -14,7 +15,7 @@ all: build
 
 fetch: $(DISTFILE)
 $(DISTFILE):
-	$(FETCH) $(DISTFILE) $(DOWNLOAD)/$(TARBALL)
+	$(FETCH) $(DISTFILE) $(DOWNLOAD)/$(DISTNAME)
 
 makesum: $(DISTINFO)
 $(DISTINFO): $(DISTFILE)

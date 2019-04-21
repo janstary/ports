@@ -6,7 +6,7 @@ VERSION		= 2.8.8
 DESCRIPTION	= a text web browser
 HOMEPAGE	= https://lynx.invisible-island.net
 DOWNLOAD	= https://invisible-mirror.net/archives/lynx/tarballs
-TARBALL		= ${NAME}${VERSION}rel.2.tar.gz
+DISTNAME	= ${NAME}${VERSION}rel.2.tar.gz
 SRCDIR          = $(WORKDIR)/lynx2-8-8
 
 DEPS		= libressl
