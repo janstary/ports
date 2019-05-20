@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libopusenc
-VERSION		= 0.2
+VERSION		= 0.2.1
 
 DESCRIPTION	= encode Opus files and streams
 HOMEPAGE	= http://www.opus-codec.org
