@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= curl
-VERSION		= 7.64.1
+VERSION		= 7.65.0
 
 DESCRIPTION	= transfer data with URLs
 HOMEPAGE	= https://curl.haxx.se/
@@ -15,7 +15,6 @@ CONFIGURE_ARGS	+= \
 		--enable-werror		\
 		--disable-ares		\
 		--disable-rt		\
-		--disable-code-coverage	\
 		--enable-http		\
 		--enable-ftp		\
 		--enable-file		\
