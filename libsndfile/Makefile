@@ -7,6 +7,13 @@ DESCRIPTION	= read and write audio files
 HOMEPAGE	= http://www.mega-nerd.com/$(NAME)/
 DOWNLOAD	= $(HOMEPAGE)/files/
 
+DEPS		=		\
+		flac		\
+		libogg		\
+		libvorbis	\
+		libvorbisenc	\
+		libsamplerate
+
 CONFIGURE_ARGS +=			\
 		--disable-sqlite	\
 		--disable-alsa		\
