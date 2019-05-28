@@ -7,11 +7,24 @@ DESCRIPTION	= the Swiss Army knife of audio manipulation
 HOMEPAGE	= https://sox.sourceforge.net/
 DOWNLOAD	= https://sourceforge.net/projects/sox/files/sox/$(VERSION)/
 
+DEPS		=			\
+		flac			\
+		opus			\
+		opusfile		\
+		libopusenc		\
+		libogg 			\
+		libvorbis		\
+		libsndfile
+
+
 CONFIGURE_ARGS +=			\
 		--disable-openmp	\
+		--disable-shared	\
+		--disable-static	\
 		--enable-symlinks	\
+		--enable-largefile	\
 		--without-libltdl	\
-		--with-magic		\
+		--without-magic		\
 		--without-png		\
 		--without-ladspa	\
 		--without-mad		\
