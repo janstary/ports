@@ -59,7 +59,7 @@ $(FAKED): $(BUILT)
 
 makecontent: $(FAKED)
 	( cd $(FAKEDIR)$(PREFIX) && find . -type f -or -type l ) \
-	| cut -c 3- > $(CONTENT)
+	| cut -c 3- | sort > $(CONTENT)
 
 package: $(PACKAGE)
 $(PACKAGE): $(FAKED) $(CONTENT)
