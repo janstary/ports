@@ -1,0 +1,10 @@
+bin/fftw-wisdom
+bin/fftw-wisdom-to-conf
+include/fftw3.h
+lib/libfftw3.a
+lib/libfftw3.dylib
+lib/libfftw3.3.dylib
+lib/libfftw3.la
+lib/pkgconfig/fftw3.pc
+man/man1/fftw-wisdom-to-conf.1
+man/man1/fftw-wisdom.1

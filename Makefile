@@ -3,6 +3,7 @@ include defaults.mk
 PORTS =			\
 	bzip2		\
 	curl		\
+	fftw		\
 	file		\
 	flac		\
 	libevent	\
