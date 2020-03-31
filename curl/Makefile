@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= curl
-VERSION		= 7.65.2
+VERSION		= 7.69.1
 
 DESCRIPTION	= transfer data with URLs
 HOMEPAGE	= https://curl.haxx.se/
