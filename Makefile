@@ -15,6 +15,7 @@ PORTS =			\
 	libvorbis	\
 	lynx		\
 	mandoc		\
+	openvpn		\
 	opus		\
 	opus-tools	\
 	opusfile	\

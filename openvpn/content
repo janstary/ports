@@ -1,0 +1,6 @@
+sbin/openvpn
+man/man8/openvpn.8
+share/doc/openvpn/COPYING
+share/doc/openvpn/COPYRIGHT.GPL
+share/doc/openvpn/Changes.rst
+share/doc/openvpn/README
