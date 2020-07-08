@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libvorbis
-VERSION		= 1.3.6
+VERSION		= 1.3.7
 
 DESCRIPTION	= the Ogg Vorbis audio codec
 HOMEPAGE	= https://xiph.org/vorbis/
