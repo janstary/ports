@@ -1,17 +1,22 @@
 include defaults.mk
 
 PORTS =			\
+	autoconf	\
+	automake	\
 	bzip2		\
-	curl		\
 	fftw		\
 	file		\
 	flac		\
+	ftp		\
 	libevent	\
+	libiconv	\
 	libogg		\
 	libopusenc	\
+	libpng		\
 	libressl	\
 	libsamplerate	\
 	libsndfile	\
+	libtool		\
 	libvorbis	\
 	lynx		\
 	mandoc		\
@@ -22,7 +27,10 @@ PORTS =			\
 	pkg-config	\
 	pstree		\
 	sox		\
-	tmux
+	tmux		\
+	unrar		\
+	vorbis-tools	\
+	wget
 
 init:
 	install -d -m 0755 $(DISTFILES)
