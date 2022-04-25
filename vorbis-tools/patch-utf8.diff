@@ -1,0 +1,20 @@
+--- ogginfo/codec_skeleton.c.orig	2021-01-09 00:13:55.000000000 +0100
++++ ogginfo/codec_skeleton.c	2022-04-21 19:47:15.000000000 +0200
+@@ -25,7 +25,7 @@
+ #include <ogg/ogg.h>
+ 
+ #include "i18n.h"
+-
++#include "utf8.h"
+ #include "private.h"
+ 
+ typedef struct {
+@@ -251,8 +251,6 @@ static void skeleton_process(stream_proc
+ 
+ static void skeleton_end(stream_processor *stream)
+ {
+-    misc_skeleton_info *self = stream->data;
+-
+     free(stream->data);
+ }
+ 

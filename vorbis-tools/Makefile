@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= vorbis-tools
-VERSION		= 1.4.0
+VERSION		= 1.4.2
 
 DESCRIPTION	= encode, decode and play OGG Vorbis files
 HOMEPAGE	= https://xiph.org/vorbis/
