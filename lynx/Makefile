@@ -1,20 +1,21 @@
 include ../defaults.mk
 
 NAME		= lynx
-VERSION		= 2.8.8
+VERSION		= 2.9.0
 
 DESCRIPTION	= a text web browser
 HOMEPAGE	= https://lynx.invisible-island.net
 DOWNLOAD	= https://invisible-mirror.net/archives/lynx/tarballs
-DISTNAME	= ${NAME}${VERSION}rel.2.tar.gz
-SRCDIR          = $(WORKDIR)/lynx2-8-8
+DISTNAME	= ${NAME}${VERSION}dev.10.tar.gz
+SRCDIR          = $(WORKDIR)/lynx2.9.0dev.10
 
-DEPS		= libressl
+DEPS		= libressl libiconv
 
 CONFIGURE_ARGS	+= \
 		--without-dbmalloc	\
 		--without-dmalloc	\
 		--disable-included-msgs	\
+		--with-libiconv-prefix=$(PREFIX) \
 		--without-nss-compat	\
 		--with-ssl=$(PREFIX)	\
 		--without-gnutls	\
@@ -26,8 +27,6 @@ CONFIGURE_ARGS	+= \
 		--enable-htmlized-cfg	\
 		--enable-local-docs	\
 		--enable-locale-charset	\
-		--disable-cjk	\
-		--disable-japanese-utf8	\
 		--enable-default-colors	\
 		--disable-extended-dtd	\
 		--disable-file-upload	\
