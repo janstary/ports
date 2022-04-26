@@ -17,6 +17,7 @@ PORTS =			\
 	libsamplerate	\
 	libsndfile	\
 	libtool		\
+	libunistring	\
 	libvorbis	\
 	lynx		\
 	mandoc		\
