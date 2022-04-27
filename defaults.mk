@@ -23,7 +23,7 @@ OPENSSL		= /usr/bin/openssl
 SHASUM		= $(OPENSSL) dgst -sha256
 SUDO		= /usr/bin/sudo
 TAR		= /usr/bin/tar
-PATCH		= /usr/bin/patch
+PATCH		= /usr/bin/patch -p0 -E -b
 XARGS		= /usr/bin/xargs
 MAKEWHATIS	= /usr/local/sbin/makewhatis
 

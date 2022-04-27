@@ -35,7 +35,7 @@ $(EXTRACTED): $(DISTFILE)
 patch: $(PATCHED)
 $(PATCHED): $(EXTRACTED)
 	@$(FIND) . -depth 1 -name patch-\* | $(XARGS) cat \
-		| ( cd $(SRCDIR) && patch -p0 -b )
+		| ( cd $(SRCDIR) && $(PATCH) )
 	@date > $(PATCHED)
 
 configure: $(CONFIGURED)
