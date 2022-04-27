@@ -1,25 +1,25 @@
 include ../defaults.mk
 
 NAME		= libsndfile
-VERSION		= 1.0.28
+VERSION		= 1.1.0
 
 DESCRIPTION	= read and write audio files
-HOMEPAGE	= http://www.mega-nerd.com/$(NAME)/
-DOWNLOAD	= $(HOMEPAGE)/files/
+HOMEPAGE	= https://github.com/$(NAME)/$(NAME)/
+DOWNLOAD	= $(HOMEPAGE)/archive/refs/tags/
+DISTNAME	= $(VERSION).tar.gz
 
 DEPS		=		\
 		flac		\
 		libogg		\
+		libopusenc	\
 		libvorbis	\
 		libvorbisenc	\
-		libsamplerate
+		libsamplerate	\
+		opus		\
+		opusfile	\
+		python
 
-CONFIGURE_ARGS +=			\
-		--disable-sqlite	\
-		--disable-alsa		\
-		--enable-external-libs	\
-		--disable-octave	\
-		--enable-full-suite	\
-		--enable-test-coverage
+CONFIGURE	= cmake
+CONFIGURE_ARGS	= .
 
 include ../port.mk
