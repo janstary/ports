@@ -1,0 +1,11 @@
+--- src/gsm610.c.orig	2022-04-26 11:20:53.000000000 +0200
++++ src/gsm610.c	2022-04-26 11:21:13.000000000 +0200
+@@ -147,7 +147,7 @@ Need separate gsm_data structs for encod
+ 			}
+ 		else
+ 		{	psf_log_printf (psf, "*** Warning : data chunk seems to be truncated.\n") ;
+-			pgsm610->blocks = psf->datalength / pgsm610->blocksize + 1 ;
++			pgsm610->blocks = (sf_count_t) psf->datalength / pgsm610->blocksize + 1 ;
+ 			} ;
+ 
+ 		psf->sf.frames = pgsm610->samplesperblock * pgsm610->blocks ;
