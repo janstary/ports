@@ -27,6 +27,7 @@ PORTS =			\
 	opusfile	\
 	pkg-config	\
 	pstree		\
+	python		\
 	sox		\
 	tmux		\
 	unrar		\
