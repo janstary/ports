@@ -1,5 +1,5 @@
 --- CMakeLists.txt.orig	2022-03-27 13:48:57.000000000 +0200
-+++ CMakeLists.txt	2022-04-27 16:53:39.000000000 +0200
++++ CMakeLists.txt	2022-04-27 16:57:49.000000000 +0200
 @@ -1,20 +1,5 @@
  cmake_minimum_required (VERSION 3.1..3.18)
  
@@ -21,22 +21,17 @@
  option (ENABLE_EXTERNAL_LIBS "Enable FLAC, Vorbis, and Opus codecs" ON)
  if (ENABLE_EXTERNAL_LIBS)
  	list (APPEND VCPKG_MANIFEST_FEATURES "external-libs")
-@@ -56,7 +41,13 @@ set (CPACK_PACKAGE_VERSION_FULL "${PROJE
+@@ -56,7 +41,8 @@ set (CPACK_PACKAGE_VERSION_FULL "${PROJE
  # System-wide includes
  #
  
 -include (GNUInstallDirs)
 +include(GNUInstallDirs)
-+#set (CMAKE_INSTALL_PREFIX "/usr/local")
-+#set (CMAKE_INSTALL_BINDIR "bin")
-+#set (CMAKE_INSTALL_LIBDIR "lib")
-+#set (CMAKE_INSTALL_INCLUDEDIR "include")
 +set (CMAKE_INSTALL_MANDIR "man")
-+
  include (FeatureSummary)
  include (CMakeDependentOption)
  include (CTest)
-@@ -66,14 +57,14 @@ include (CheckCCompilerFlag)
+@@ -66,14 +52,14 @@ include (CheckCCompilerFlag)
  # Options
  #
  
@@ -53,7 +48,7 @@
  option (ENABLE_BOW_DOCS "Enable black-on-white html docs" OFF)
  if (MSVC AND (DEFINED ENABLE_STATIC_RUNTIME))
  	option (ENABLE_STATIC_RUNTIME "Enable static runtime" ${ENABLE_STATIC_RUNTIME})
-@@ -126,8 +117,6 @@ endif ()
+@@ -126,8 +112,6 @@ endif ()
  
  set (HAVE_EXTERNAL_XIPH_LIBS ${ENABLE_EXTERNAL_LIBS})
  set (HAVE_SQLITE3 ${BUILD_REGTEST})
@@ -62,7 +57,7 @@
  
  set (ENABLE_EXPERIMENTAL_CODE ${ENABLE_EXPERIMENTAL})
  set (HAVE_MPEG ${ENABLE_MPEG})
-@@ -577,16 +566,6 @@ if (BUILD_PROGRAMS)
+@@ -577,16 +561,6 @@ if (BUILD_PROGRAMS)
  		)
  	target_link_libraries (sndfile-play PRIVATE $<$<BOOL:${LIBM_REQUIRED}>:m>)
  	target_link_libraries (sndfile-play PRIVATE sndfile)
@@ -79,7 +74,7 @@
  
  # sndfile-convert
  
-@@ -749,11 +728,6 @@ if (BUILD_EXAMPLES)
+@@ -749,11 +723,6 @@ if (BUILD_EXAMPLES)
  	add_executable (generate examples/generate.c)
  	target_link_libraries (generate PRIVATE sndfile)
  
@@ -91,7 +86,7 @@
  	set (SNDFILE_EXAMPLE_TARGETS
  		sndfile-to-text
  		sndfile-loopify
-@@ -761,7 +735,6 @@ if (BUILD_EXAMPLES)
+@@ -761,7 +730,6 @@ if (BUILD_EXAMPLES)
  		sfprocess
  		list_formats
  		generate
@@ -99,7 +94,7 @@
  		)
  
  	set_target_properties(${SNDFILE_EXAMPLE_TARGETS} PROPERTIES FOLDER Examples)
-@@ -1128,17 +1101,6 @@ if (BUILD_TESTING)
+@@ -1128,17 +1096,6 @@ if (BUILD_TESTING)
  #		add_test (win32_ordinal_test win32_ordinal_test)
  #	endif ()
  
@@ -117,7 +112,7 @@
  	### external_libs_test
  
  	add_executable (external_libs_test tests/external_libs_test.c)
-@@ -1564,7 +1526,6 @@ if (BUILD_TESTING)
+@@ -1564,7 +1521,6 @@ if (BUILD_TESTING)
  		headerless_test
  		rdwr_test
  		locale_test
