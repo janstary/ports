@@ -3,7 +3,6 @@ include defaults.mk
 PORTS =			\
 	autoconf	\
 	automake	\
-	bzip2		\
 	fftw		\
 	file		\
 	flac		\
