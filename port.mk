@@ -67,11 +67,13 @@ $(PACKAGE): $(FAKED) $(CONTENT)
 	install -d $(PACKAGES)
 	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -cvzf $(PACKAGE)
 
-install: $(PKGREC)/content
-	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE)
-	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR)
-	install -d -m 0755 $(PKGREC)
-	install -m 0644 content $(PKGREC)
+install: $(PKGREC)
+$(PKGREC): package
+	test -f $(PKGREC)/content && echo $(NAME) already installed || { \
+	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE) ; \
+	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR) ; \
+	install -d -m 0755 $(PKGREC) ; \
+	install -m 0644 content $(PKGREC) ; }
 
 uninstall:
 	@test -f $(PKGREC)/content && { \
