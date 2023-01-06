@@ -6,7 +6,6 @@ PORTS =			\
 	fftw		\
 	file		\
 	flac		\
-	ftp		\
 	libevent	\
 	libiconv	\
 	libogg		\

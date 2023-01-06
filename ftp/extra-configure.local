@@ -1,2 +1,0 @@
-CFLAGS="$CFLAGS -I/usr/local/include"
-LDFLAGS="$LDFLAGS -L/usr/local/lib"
