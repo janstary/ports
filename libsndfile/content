@@ -10,10 +10,6 @@ bin/sndfile-play
 bin/sndfile-salvage
 include/sndfile.h
 include/sndfile.hh
-lib/cmake/SndFile/SndFileConfig.cmake
-lib/cmake/SndFile/SndFileConfigVersion.cmake
-lib/cmake/SndFile/SndFileTargets-noconfig.cmake
-lib/cmake/SndFile/SndFileTargets.cmake
 lib/libsndfile.1.0.35.dylib
 lib/libsndfile.1.dylib
 lib/libsndfile.dylib
