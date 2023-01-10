@@ -69,7 +69,7 @@ $(PACKAGE): $(FAKED) $(CONTENT)
 
 install: $(PKGREC)
 $(PKGREC): package
-	test -f $(PKGREC)/content && echo $(NAME) already installed || { \
+	@test -f $(PKGREC)/content && echo $(NAME) already installed || { \
 	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE) ; \
 	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR) ; \
 	install -d -m 0755 $(PKGREC) ; \
