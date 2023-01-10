@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libsndfile
-VERSION		= 1.1.0
+VERSION		= 1.2.0
 
 DESCRIPTION	= read and write audio files
 HOMEPAGE	= https://github.com/$(NAME)/$(NAME)/
@@ -13,11 +13,9 @@ DEPS		=		\
 		libogg		\
 		libopusenc	\
 		libvorbis	\
-		libvorbisenc	\
 		libsamplerate	\
 		opus		\
-		opusfile	\
-		python
+		opusfile
 
 CONFIGURE	= cmake
 CONFIGURE_ARGS	= .

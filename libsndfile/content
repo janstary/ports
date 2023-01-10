@@ -14,7 +14,7 @@ lib/cmake/SndFile/SndFileConfig.cmake
 lib/cmake/SndFile/SndFileConfigVersion.cmake
 lib/cmake/SndFile/SndFileTargets-noconfig.cmake
 lib/cmake/SndFile/SndFileTargets.cmake
-lib/libsndfile.1.0.34.dylib
+lib/libsndfile.1.0.35.dylib
 lib/libsndfile.1.dylib
 lib/libsndfile.dylib
 lib/pkgconfig/sndfile.pc
