@@ -1,0 +1,12 @@
+--- src/ima_adpcm.corig	2024-05-21 20:49:54
++++ src/ima_adpcm.c	2024-05-21 20:50:02
+@@ -262,9 +262,6 @@ static int count = 0 ;
+ 	int		chan, k, diff, bytecode, predictor ;
+ 	short	step, stepindx, *sampledata ;
+ 
+-static int count = 0 ;
+-count ++ ;
+-
+ 	pima->blockcount += pima->channels ;
+ 	pima->samplecount = 0 ;
+ 
