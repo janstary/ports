@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= flac
-VERSION		= 1.3.4
+VERSION		= 1.4.3
 
 DESCRIPTION	= Free Lossless Audio Codec
 HOMEPAGE	= https://xiph.org/flac/
@@ -11,7 +11,7 @@ SUFFIX		= tar.xz
 DEPS		= libogg
 
 CONFIGURE_ARGS	+= \
-		--enable-werror			\
+		--disable-werror		\
 		--disable-asm-optimizations	\
 		--disable-stack-smash-protection\
 		--disable-valgrind-testing	\
