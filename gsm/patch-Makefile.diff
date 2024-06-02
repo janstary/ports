@@ -1,0 +1,48 @@
+--- Makefile.orig	2022-08-04 20:46:46
++++ Makefile	2024-06-02 21:17:35
+@@ -43,7 +43,7 @@ CC		= gcc -ansi -pedantic
+ # CC		= /usr/lang/acc
+ # CCFLAGS 	= -c -O
+ 
+-CC		= gcc -ansi -pedantic
++#CC		= gcc -ansi -pedantic
+ CCFLAGS 	= -c -O2 -DNeedFunctionPrototypes=1 -Wall -Wno-comment
+ 
+ LD 		= $(CC)
+@@ -71,7 +71,7 @@ INSTALL_ROOT	=
+ # Leave INSTALL_ROOT empty (or just don't execute "make install") to
+ # not install gsm and toast outside of this directory.
+ 
+-INSTALL_ROOT	=
++INSTALL_ROOT	= ../../fake/usr/local/
+ 
+ # Where do you want to install the gsm library, header file, and manpages?
+ #
+@@ -80,7 +80,7 @@ GSM_INSTALL_INC = $(GSM_INSTALL_ROOT)/inc
+ 
+ GSM_INSTALL_ROOT = $(INSTALL_ROOT)
+ GSM_INSTALL_LIB = $(GSM_INSTALL_ROOT)/lib
+-GSM_INSTALL_INC = $(GSM_INSTALL_ROOT)/inc
++GSM_INSTALL_INC = $(GSM_INSTALL_ROOT)/include
+ GSM_INSTALL_MAN = $(GSM_INSTALL_ROOT)/man/man3
+ 
+ 
+@@ -332,11 +332,18 @@ gsminstall:
+ 
+ gsminstall:
+ 		-if [ x"$(GSM_INSTALL_ROOT)" != x ] ; then	\
++			install -d $(GSM_INSTALL_ROOT) ; \
++			install -d $(GSM_INSTALL_LIB) ; \
++			install -d $(GSM_INSTALL_INC) ; \
++			install -d $(GSM_INSTALL_MAN) ; \
+ 			make $(GSM_INSTALL_TARGETS) ;	\
+ 		fi
+ 
+ toastinstall:
+ 		-if [ x"$(TOAST_INSTALL_ROOT)" != x ]; then	\
++			install -d $(TOAST_INSTALL_ROOT)/ ; \
++			install -d $(TOAST_INSTALL_BIN)/ ; \
++			install -d $(TOAST_INSTALL_MAN)/ ; \
+ 			make $(TOAST_INSTALL_TARGETS);	\
+ 		fi
+ 

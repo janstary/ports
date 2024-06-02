@@ -1,0 +1,10 @@
+bin/tcat
+bin/toast
+bin/untoast
+include/gsm.h
+lib/libgsm.a
+man/man1/toast.1
+man/man3/gsm.3
+man/man3/gsm_explode.3
+man/man3/gsm_option.3
+man/man3/gsm_print.3

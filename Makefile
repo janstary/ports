@@ -6,6 +6,7 @@ PORTS =			\
 	fftw		\
 	file		\
 	flac		\
+	gsm		\
 	libevent	\
 	libiconv	\
 	libogg		\
@@ -29,6 +30,7 @@ PORTS =			\
 	tmux		\
 	unrar		\
 	vorbis-tools	\
+	wavpack		\
 	wget
 
 init:
