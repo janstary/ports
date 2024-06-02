@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libpng
-VERSION		= 1.6.35
+VERSION		= 1.6.43
 
 DESCRIPTION	= manipulate PNG files
 HOMEPAGE	= http://www.libpng.org/pub/png/libpng.html
