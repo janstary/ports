@@ -1,0 +1,14 @@
+include/twolame.h
+lib/libtwolame.0.dylib
+lib/libtwolame.a
+lib/libtwolame.dylib
+lib/libtwolame.la
+lib/pkgconfig/twolame.pc
+man/man1/twolame.1
+share/doc/twolame/AUTHORS
+share/doc/twolame/COPYING
+share/doc/twolame/NEWS
+share/doc/twolame/README
+share/doc/twolame/api.txt
+share/doc/twolame/psycho.txt
+share/doc/twolame/vbr.txt
