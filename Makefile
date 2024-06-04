@@ -7,8 +7,10 @@ PORTS =			\
 	file		\
 	flac		\
 	gsm		\
+	lame		\
 	libevent	\
 	libiconv	\
+	libmad		\
 	libogg		\
 	libopusenc	\
 	libpng		\
@@ -21,6 +23,7 @@ PORTS =			\
 	lynx		\
 	mandoc		\
 	openvpn		\
+	opencore-amr	\
 	opus		\
 	opus-tools	\
 	opusfile	\
@@ -28,7 +31,9 @@ PORTS =			\
 	pstree		\
 	sox		\
 	tmux		\
+	twolame		\
 	unrar		\
+	vo-amrwbenc	\
 	vorbis-tools	\
 	wavpack		\
 	wget
