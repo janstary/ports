@@ -1,0 +1,17 @@
+bin/amrnb-dec
+bin/amrnb-enc
+bin/amrwb-dec
+include/opencore-amrnb/interf_dec.h
+include/opencore-amrnb/interf_enc.h
+include/opencore-amrwb/dec_if.h
+include/opencore-amrwb/if_rom.h
+lib/libopencore-amrnb.0.dylib
+lib/libopencore-amrnb.a
+lib/libopencore-amrnb.dylib
+lib/libopencore-amrnb.la
+lib/libopencore-amrwb.0.dylib
+lib/libopencore-amrwb.a
+lib/libopencore-amrwb.dylib
+lib/libopencore-amrwb.la
+lib/pkgconfig/opencore-amrnb.pc
+lib/pkgconfig/opencore-amrwb.pc
