@@ -10,6 +10,7 @@ PORTS =			\
 	lame		\
 	libevent	\
 	libiconv	\
+	libid3tag	\
 	libmad		\
 	libogg		\
 	libopusenc	\
