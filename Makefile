@@ -12,6 +12,7 @@ PORTS =			\
 	libiconv	\
 	libid3tag	\
 	libmad		\
+	libmagic	\
 	libogg		\
 	libopusenc	\
 	libpng		\

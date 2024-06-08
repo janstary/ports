@@ -1,0 +1,10 @@
+bin/file
+include/magic.h
+lib/libmagic.1.dylib
+lib/libmagic.dylib
+lib/libmagic.la
+lib/pkgconfig/libmagic.pc
+man/man1/file.1
+man/man3/libmagic.3
+man/man5/magic.5
+share/misc/magic.mgc
