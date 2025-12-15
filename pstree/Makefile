@@ -1,13 +1,12 @@
 include ../defaults.mk
 
 NAME		= pstree
-VERSION		= 2.39
+VERSION		= 2.40
 
 DESCRIPTION	= list processes as a tree
-HOMEPAGE	= http://www.thp.uni-duisburg.de/pstree/
-DOWNLOAD	= ftp://ftp.thp.uni-duisburg.de/pub/source/
+DOWNLOAD	= https://github.com/FredHucht/pstree/archive/refs/tags/
+DISTNAME	= v$(VERSION).$(SUFFIX)
 
-SRCDIR		= work
 CONFIGURE	=
 
 include ../port.mk
