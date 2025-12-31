@@ -1,13 +1,13 @@
 include ../defaults.mk
 
 NAME		= lynx
-VERSION		= 2.9.0
+VERSION		= 2.9.2
 
 DESCRIPTION	= a text web browser
 HOMEPAGE	= https://lynx.invisible-island.net
-DOWNLOAD	= https://invisible-mirror.net/archives/lynx/tarballs
-DISTNAME	= ${NAME}${VERSION}dev.10.tar.gz
-SRCDIR          = $(WORKDIR)/lynx2.9.0dev.10
+DOWNLOAD	= https://invisible-island.net/archives/lynx/tarballs
+DISTNAME	= ${NAME}${VERSION}.tar.gz
+SRCDIR          = $(WORKDIR)/${NAME}${VERSION}
 
 DEPS		= libressl libiconv
 
