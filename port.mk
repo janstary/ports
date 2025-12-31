@@ -79,7 +79,7 @@ uninstall:
 	@test -f $(PKGREC)/content && { \
 	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) $(XARGS) rm -f ; \
 	rm -rf $(PKGREC) ; \
-	} || echo $(NAME) not installed
+	} || echo $(NAME) $(VERSION) not installed
 
 clean:
 	@rm -rf $(WORKDIR) $(FAKEDIR) *~
