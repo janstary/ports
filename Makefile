@@ -4,7 +4,6 @@ PORTS =			\
 	autoconf	\
 	automake	\
 	fftw		\
-	file		\
 	flac		\
 	gsm		\
 	lame		\
