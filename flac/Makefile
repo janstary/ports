@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= flac
-VERSION		= 1.4.3
+VERSION		= 1.5.0
 
 DESCRIPTION	= Free Lossless Audio Codec
 HOMEPAGE	= https://xiph.org/flac/
