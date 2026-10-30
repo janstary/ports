@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libiconv
-VERSION		= 1.16
+VERSION		= 1.19
 
 DESCRIPTION	= character set conversion
 HOMEPAGE	= https://www.gnu.org/software/libiconv/
