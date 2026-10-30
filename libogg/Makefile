@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= libogg
-VERSION		= 1.3.5
+VERSION		= 1.3.6
 
 DESCRIPTION	= Ogg Bitstream Library
 HOMEPAGE	= http://www.vorbis.com/
