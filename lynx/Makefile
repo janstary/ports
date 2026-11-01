@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= lynx
-VERSION		= 2.9.2
+VERSION		= 2.9.3
 
 DESCRIPTION	= a text web browser
 HOMEPAGE	= https://lynx.invisible-island.net
