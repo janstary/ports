@@ -1,0 +1,6 @@
+include/id3tag.h
+lib/libid3tag.0.3.0.dylib
+lib/libid3tag.0.dylib
+lib/libid3tag.a
+lib/libid3tag.dylib
+lib/libid3tag.la
