@@ -11,6 +11,12 @@ PKGREC	= $(PKGINDEX)/$(NAME)-$(VERSION)
 PKGFILE	= $(NAME)-$(VERSION)-$(shell uname -m).tar.gz
 PACKAGE	= $(PACKAGES)/$(PKGFILE)
 
+#.PHONY: fetch makesum checksum extract patch configure build
+#.PHONY: checksum
+#.PHONY: fetch makesum checksum extract patch configure build
+#.PHONY: fake package install uninstall clean distclean all
+#.PHONY: package install uninstall clean distclean
+
 all: build
 
 fetch: $(DISTFILE)
@@ -62,30 +68,23 @@ makecontent: $(FAKED)
 	( cd $(FAKEDIR)$(PREFIX) && find . -type f -or -type l ) \
 	| cut -c 3- | sort > $(CONTENT)
 
-package: $(PACKAGE)
-$(PACKAGE): $(FAKED) $(CONTENT)
-	install -d $(PACKAGES)
-	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -cvzf $(PACKAGE)
+package: $(CONTENT) fake
+	test -s $(PACKAGE) || \
+	$(TAR) -I $(CONTENT) -C $(FAKEDIR)$(PREFIX) -czf $(PACKAGE)
 
-install: $(PKGREC)
-$(PKGREC): package
-	@test -f $(PKGREC)/content && echo $(NAME) already installed || { \
-	$(SUDO) $(TAR) -C $(PREFIX) -xvzf $(PACKAGE) ; \
-	test -x $(MAKEWHATIS) && $(SUDO) $(MAKEWHATIS) $(MANDIR) ; \
-	install -d -m 0755 $(PKGREC) ; \
-	install -m 0644 content $(PKGREC) ; }
+install: $(PACKAGE)
+	test -s $(PKGREC) || {						\
+	$(SUDO) $(TAR) -C $(PREFIX) -xzf $(PACKAGE)		;	\
+	install -m 0644 $(CONTENT) $(PKGREC)			;	\
+	if test -x $(MAKEWHATIS) ; then $(SUDO) $(MAKEWHATIS) $(MANDIR); fi ; }
 
 uninstall:
-	@test -f $(PKGREC)/content && { \
-	cd $(PREFIX) && cat $(PKGREC)/content | $(SUDO) $(XARGS) rm -f ; \
-	rm -rf $(PKGREC) ; \
-	} || echo $(NAME) $(VERSION) not installed
+	test -s $(PKGREC) && {						\
+	cd $(PREFIX) && cat $(PKGREC) | $(SUDO) $(XARGS) rm -f	;	\
+	rm -rf $(PKGREC)					;	}
 
 clean:
 	@rm -rf $(WORKDIR) $(FAKEDIR) *~
 
 distclean: clean
 	@rm -f $(DISTFILE)
-
-.PHONY: fetch makesum checksum extract patch configure build
-.PHONY: fake package install uninstall clean distclean all
