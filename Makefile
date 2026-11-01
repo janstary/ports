@@ -10,7 +10,6 @@ PORTS =			\
 	libevent	\
 	libiconv	\
 	libid3tag	\
-	libmad		\
 	libogg		\
 	libopusenc	\
 	libpng		\
@@ -22,6 +21,7 @@ PORTS =			\
 	libvorbis	\
 	lynx		\
 	mandoc		\
+	mpg123		\
 	openvpn		\
 	opencore-amr	\
 	opus		\
