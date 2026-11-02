@@ -1,7 +1,7 @@
 include ../defaults.mk
 
 NAME		= unrar
-VERSION		= 5.6.8
+VERSION		= 7.2.7
 
 DESCRIPTION	= extract RAR archives
 HOMEPAGE	= https://www.rarlab.com
